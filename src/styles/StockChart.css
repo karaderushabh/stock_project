@@ -1,0 +1,9 @@
+.chart-title {
+  align-items: center;
+  justify-content: center;
+}
+
+.chart-container {
+  width: 60%;
+  background-color: "white";
+}

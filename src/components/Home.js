@@ -1,11 +1,51 @@
 // Home.js
-import React from "react";
+import axios from "axios";
+import React, { useEffect, useState } from "react";
+import { cashFlowApi } from "../config";
+import StockChart from "./charts/StockChart";
+import { IgrFinancialChart } from "igniteui-react-charts";
+import { IgrFinancialChartModule } from "igniteui-react-charts";
+import getMultipleStocks from "./StockHistory.ts";
+import "../styles/Home.css";
+IgrFinancialChartModule.register();
 
 const Home = () => {
+  const [data, setData] = useState(null);
+  const [tempData, setTempData] = useState(null);
+  useEffect(() => {
+    getMultipleStocks().then((stocks: any[]) => {
+      setData(stocks);
+    });
+    axios
+      .get(cashFlowApi)
+      .then((response) => {
+        setTempData(response.data);
+        console.log(data);
+      })
+      .catch((error) => {
+        console.error("Error fetching data:", error);
+      });
+  }, []);
   return (
-    <div>
-      <h2>Home Page</h2>
-      {/* Add home page content here */}
+    <div className="container">
+      <div className="chart">
+        {data ? (
+          <IgrFinancialChart
+            chartType="Line"
+            height="100%"
+            thickness={2}
+            chartTitle="Apple vs Microsoft Changes"
+            subtitle="Between Sep 2022 and Nov 2023"
+            yAxisMode="PercentChange"
+            yAxisTitle="Percent Changed"
+            dataSource={data}
+          />
+        ) : (
+          <></>
+        )}
+      </div>
+
+      {tempData && tempData.length > 0 && <StockChart stockData={tempData} />}
     </div>
   );
 };

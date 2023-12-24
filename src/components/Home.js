@@ -7,15 +7,21 @@ import { IgrFinancialChart } from "igniteui-react-charts";
 import { IgrFinancialChartModule } from "igniteui-react-charts";
 import getMultipleStocks from "./StockHistory.ts";
 import "../styles/Home.css";
+import MyLoader from "./MyLoader";
+
 IgrFinancialChartModule.register();
 
 const Home = () => {
   const [data, setData] = useState(null);
   const [tempData, setTempData] = useState(null);
   useEffect(() => {
-    getMultipleStocks().then((stocks: any[]) => {
-      setData(stocks);
-    });
+    getMultipleStocks()
+      .then((stocks: any[]) => {
+        setData(stocks);
+      })
+      .catch((error) => {
+        console.error("Error fetching data:", error);
+      });
     axios
       .get(cashFlowApi)
       .then((response) => {
@@ -41,10 +47,11 @@ const Home = () => {
             dataSource={data}
           />
         ) : (
-          <></>
+          <div className="loader">
+            <MyLoader />
+          </div>
         )}
       </div>
-
       {tempData && tempData.length > 0 && <StockChart stockData={tempData} />}
     </div>
   );

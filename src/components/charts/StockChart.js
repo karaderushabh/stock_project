@@ -19,10 +19,10 @@ const StockChart = ({ stockData }) => {
   return (
     <div className="chart-container">
       <h1 className="chart-title">Cash Flow of JPM </h1>
-      <ResponsiveContainer width="70%" height={300}>
+      <ResponsiveContainer width="90%" height={300}>
         <LineChart
           data={stockData}
-          margin={{ top: 30, right: 30, left: 30, bottom: 30 }}
+          margin={{ top: 30, right: 0, left: 30, bottom: 30 }}
         >
           <XAxis dataKey="fiscalDate" />
           <YAxis tickFormatter={formatYAxis} />

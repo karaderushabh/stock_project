@@ -3,6 +3,7 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { cashFlowApi } from "../config";
 import StockChart from "./charts/StockChart";
+import StockTable from "./charts/StockTable";
 import { IgrFinancialChart } from "igniteui-react-charts";
 import { IgrFinancialChartModule } from "igniteui-react-charts";
 import getMultipleStocks from "./StockHistory.ts";
@@ -53,6 +54,7 @@ const Home = () => {
         )}
       </div>
       {tempData && tempData.length > 0 && <StockChart stockData={tempData} />}
+      <div className="table">{<StockTable />}</div>
     </div>
   );
 };

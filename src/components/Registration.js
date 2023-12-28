@@ -1,13 +1,16 @@
 import React, { useState } from "react";
 import { useAuth } from "../useAuth"; // Update the path
 import "../styles/AuthPages.css";
+import { useNavigate } from "react-router-dom";
 
 const Register = () => {
   const { register } = useAuth(); // Use the register function
   const [formData, setFormData] = useState({ email: "", password: "" });
-
+  const navigate = useNavigate();
   const handleRegister = () => {
     register(formData.email, formData.password);
+    alert("Succesfully Registered");
+    navigate("/login");
     console.log("Registering with:", formData);
   };
 

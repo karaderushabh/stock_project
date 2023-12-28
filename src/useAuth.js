@@ -8,7 +8,12 @@ export const AuthProvider = ({ children }) => {
   const [users, setUsers] = useState([]);
 
   const login = (email, password) => {
-    setCurrentUser({ email });
+    const user = users.find(
+      (u) => u.email === email && u.password === password
+    );
+    if (user) {
+      setCurrentUser(user);
+    }
   };
 
   const register = (email, password) => {

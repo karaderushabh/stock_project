@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useAuth } from "../useAuth";
 import "../styles/AuthPages.css";
 import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 const Login = () => {
   const { users, login } = useAuth();
@@ -13,9 +14,11 @@ const Login = () => {
     const user = users.find((u) => u.email === formData.email);
     if (user && user.password === formData.password) {
       login(formData.email, formData.password);
+      alert("Succesfully Logged in");
       console.log("Logging in with:", formData);
-      navigate("/");
+      navigate("/home");
     } else {
+      alert("Wrong username or Password");
       console.error("Invalid login credentials");
     }
   };
@@ -41,6 +44,9 @@ const Login = () => {
         <button type="button" onClick={handleLogin}>
           Login
         </button>
+        <p>
+          Don't have an account? <Link to="/register">Register</Link>
+        </p>
       </form>
     </div>
   );

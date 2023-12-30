@@ -1,16 +1,29 @@
-.chart {
-  height: 500px;
-  border: 1px solid black;
-  box-shadow: 2px;
-}
 .container {
-  padding-top: 10px;
-}
-.loader {
-  background-color: "red";
+  display: flex;
+  flex-direction: column;
   align-items: center;
-  margin: auto;
-  padding: 200px;
-  padding-left: 48%;
+  padding: 20px;
+}
+
+.chart,
+.graph,
+.table {
+  width: 100%;
+  margin-bottom: 20px;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  background-color: #fff;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.chart {
+  height: 400px;
+}
+
+.loader {
+  display: flex;
+  align-items: center;
   justify-content: center;
+  height: 100%;
 }

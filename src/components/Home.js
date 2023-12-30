@@ -53,7 +53,9 @@ const Home = () => {
           </div>
         )}
       </div>
-      {tempData && tempData.length > 0 && <StockChart stockData={tempData} />}
+      <div className="graph">
+        {tempData && tempData.length > 0 && <StockChart stockData={tempData} />}
+      </div>
       <div className="table">{<StockTable />}</div>
     </div>
   );

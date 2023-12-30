@@ -1,13 +1,24 @@
-.chart-title {
-  align-items: center;
-  justify-content: center;
-  font-size: 25px;
-  padding-left: 250px;
-  font-family: Arial, Helvetica, sans-serif;
-  background-color: "#1c7398";
+.chart-container {
+  padding: 20px;
+  border: 1px solid #3498db;
+  border-radius: 8px;
+  background-color: #fff;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  width: 90%;
 }
 
-.chart-container {
-  border: 2px solid black;
-  width: 50%;
+.chart-title {
+  text-align: center;
+  font-size: 20px;
+  margin-bottom: 20px;
+  padding: 10px;
+  background-color: #1c7398;
+  color: #fff;
+  border-radius: 8px;
+}
+
+.recharts-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
